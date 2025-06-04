@@ -1,0 +1,247 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API Server for the PersonList Application",
+        "title": "Person List API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "paths": {
+        "/person": {
+            "get": {
+                "description": "get person list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "person"
+                ],
+                "summary": "GetPersonList",
+                "operationId": "person-list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "person search by age",
+                        "name": "age",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "person search by gender",
+                        "name": "gender",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "person search by nationality",
+                        "name": "nationality",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "pagination param",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "pagination param",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/entity.Person"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "description": "add new person",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "person"
+                ],
+                "summary": "AddPerson",
+                "operationId": "new-person",
+                "parameters": [
+                    {
+                        "description": "New person body",
+                        "name": "new_person_body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.NewPersonBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Person"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/person/{id}": {
+            "put": {
+                "description": "update person",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "person"
+                ],
+                "summary": "UpdatePerson",
+                "operationId": "update-person",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Person ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "New person body",
+                        "name": "new_person_body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.NewPersonBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.Person"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "description": "delete person",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "person"
+                ],
+                "summary": "DeletePerson",
+                "operationId": "delete-person",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Person ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "entity.NewPersonBody": {
+            "type": "object",
+            "required": [
+                "name",
+                "surname"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "patronymic": {
+                    "type": "string"
+                },
+                "surname": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.Person": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nationality": {
+                    "type": "string"
+                },
+                "patronymic": {
+                    "type": "string"
+                },
+                "surname": {
+                    "description": "gorm.Model",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

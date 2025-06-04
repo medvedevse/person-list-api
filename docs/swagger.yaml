@@ -1,0 +1,164 @@
+definitions:
+  entity.NewPersonBody:
+    properties:
+      name:
+        type: string
+      patronymic:
+        type: string
+      surname:
+        type: string
+    required:
+    - name
+    - surname
+    type: object
+  entity.Person:
+    properties:
+      age:
+        type: integer
+      gender:
+        type: string
+      name:
+        type: string
+      nationality:
+        type: string
+      patronymic:
+        type: string
+      surname:
+        description: gorm.Model
+        type: string
+    type: object
+info:
+  contact: {}
+  description: API Server for the PersonList Application
+  title: Person List API
+  version: "1.0"
+paths:
+  /person:
+    get:
+      consumes:
+      - application/json
+      description: get person list
+      operationId: person-list
+      parameters:
+      - description: person search by age
+        in: query
+        name: age
+        type: string
+      - description: person search by gender
+        in: query
+        name: gender
+        type: string
+      - description: person search by nationality
+        in: query
+        name: nationality
+        type: string
+      - description: pagination param
+        in: query
+        name: page
+        type: string
+      - description: pagination param
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/entity.Person'
+            type: array
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+      summary: GetPersonList
+      tags:
+      - person
+    post:
+      consumes:
+      - application/json
+      description: add new person
+      operationId: new-person
+      parameters:
+      - description: New person body
+        in: body
+        name: new_person_body
+        required: true
+        schema:
+          $ref: '#/definitions/entity.NewPersonBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Person'
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: AddPerson
+      tags:
+      - person
+  /person/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete person
+      operationId: delete-person
+      parameters:
+      - description: Person ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: DeletePerson
+      tags:
+      - person
+    put:
+      consumes:
+      - application/json
+      description: update person
+      operationId: update-person
+      parameters:
+      - description: Person ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: New person body
+        in: body
+        name: new_person_body
+        required: true
+        schema:
+          $ref: '#/definitions/entity.NewPersonBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Person'
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: UpdatePerson
+      tags:
+      - person
+swagger: "2.0"
