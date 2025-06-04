@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"person-service/internal/entity"
+	"github.com/medvedevse/person-list-api/internal/entity"
 
 	"go.uber.org/zap"
 )

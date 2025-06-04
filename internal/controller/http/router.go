@@ -4,9 +4,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 
-	_ "person-service/docs"
-	"person-service/internal/repository/persistent"
-	"person-service/internal/usecase"
+	_ "github.com/medvedevse/person-list-api/docs"
+	"github.com/medvedevse/person-list-api/internal/repository/persistent"
+	"github.com/medvedevse/person-list-api/internal/usecase"
 
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"

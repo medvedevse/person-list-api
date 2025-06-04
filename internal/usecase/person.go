@@ -3,10 +3,10 @@ package usecase
 import (
 	"net/http"
 
-	"person-service/internal/entity"
-	"person-service/internal/repository/persistent"
-	"person-service/internal/repository/webapi"
-	"person-service/pkg/pagination"
+	"github.com/medvedevse/person-list-api/internal/entity"
+	"github.com/medvedevse/person-list-api/internal/repository/persistent"
+	"github.com/medvedevse/person-list-api/internal/repository/webapi"
+	"github.com/medvedevse/person-list-api/pkg/pagination"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"

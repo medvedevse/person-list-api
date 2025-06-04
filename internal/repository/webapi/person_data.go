@@ -1,7 +1,7 @@
 package webapi
 
 import (
-	"person-service/internal/entity"
+	"github.com/medvedevse/person-list-api/internal/entity"
 
 	"go.uber.org/zap"
 )

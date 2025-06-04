@@ -1,4 +1,4 @@
-module person-service
+module github.com/medvedevse/person-list-api
 
 go 1.24.3
 

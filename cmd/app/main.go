@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	"person-service/config"
-	"person-service/internal/controller/http"
-	"person-service/internal/controller/http/middleware"
-	"person-service/internal/repository/persistent"
-	"person-service/pkg/logger"
+	"github.com/medvedevse/person-list-api/config"
+	"github.com/medvedevse/person-list-api/internal/controller/http"
+	"github.com/medvedevse/person-list-api/internal/controller/http/middleware"
+	"github.com/medvedevse/person-list-api/internal/repository/persistent"
+	"github.com/medvedevse/person-list-api/pkg/logger"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
