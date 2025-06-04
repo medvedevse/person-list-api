@@ -7,16 +7,16 @@
 4. Run `go run cmd/app/main.go`
 
 ## Description
-This is a simple API service with person data
+This is a simple API service with person data<br>
 Stack: Gin, Gorm, Postgres, Swaggo, Zap, godotenv
 
 ## Docs
 Swagger: `http://localhost:8080/swagger/index.html`
 
 ## Endpoints
-`GET /person` - get a full person list
-`GET /person?age=29&gender=male&nationality=RU` - get a sorted person list
-`GET /person?page=1&limit=3` - get a paginated person list
-`POST /person` - add a new person
-`PUT /person/:id` - update an existing person
+`GET /person` - get a full person list<br>
+`GET /person?age=29&gender=male&nationality=RU` - get a sorted person list<br>
+`GET /person?page=1&limit=3` - get a paginated person list<br>
+`POST /person` - add a new person<br>
+`PUT /person/:id` - update an existing person<br>
 `DELETE /person/:id` - delete an existing person
